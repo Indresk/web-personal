@@ -1,8 +1,8 @@
-export default function Footer(){
+export default function ErrorPage(){
     return(
         <>
             <h1 className="text-3xl font-bold underline">
-                Hello world!
+                404
             </h1>
         </>
     )
