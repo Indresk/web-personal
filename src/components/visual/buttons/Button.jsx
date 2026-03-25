@@ -1,12 +1,11 @@
 export default function Button({style,inverted,icon,children}){
     let classesBuffer = ''
 
-    switch(color){
-        case "primary": classesBuffer += 'border-primary ';break;
-        case "secondary": classesBuffer += 'border-secondary ';break;
+    switch(style){
+        case "text-link": classesBuffer += 'border-primary ';break;
         default: classesBuffer += 'border-white ';break;
     }
-    
+
     switch(color){
         case "primary": classesBuffer += 'border-primary ';break;
         case "secondary": classesBuffer += 'border-secondary ';break;

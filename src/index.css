@@ -19,7 +19,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
-    cursor: url(cursor.svg) 0 0, auto;
+    cursor: url(/cursor.svg) 0 0, auto;
 }
 
 html{
