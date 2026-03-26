@@ -6,83 +6,60 @@ import TextDecorationBar from '../../visual/containers/TextDecorationBar';
 
 gsap.registerPlugin(useGSAP,SplitText);
 
-
-export default function HeroMH(){
+export default function HeroMH() {
     const containerRef = useRef();
     const textRef = useRef();
-    const [animation, setAnimation] = useState(null);
     const splitRef = useRef();
+    const animationRef = useRef();
 
-    useEffect(() => {
-        let ticking = false;
-        const setupSplit = () => {
-            if (ticking) return;
-            ticking = true;
-            requestAnimationFrame(() => {
-                if (splitRef.current) splitRef.current.revert();
-                splitRef.current = SplitText.create(textRef.current, { type: "chars,words,lines" });
-                ticking = false;
-            });
-        };
+    const playChars = ()=>{
+        if(animationRef.current){
+            animationRef.current.revert();
+            animationRef.current = null;
+        }
+        if(!splitRef.current?.chars?.length) return;
 
-        window.addEventListener('resize', setupSplit);
-        setTimeout(()=>playChars(),100)
-        return () => window.removeEventListener('resize', setupSplit);
-    }, []);
-
-    const playChars = () => {
-        animation?.revert();
         const anim = gsap.from(splitRef.current.chars, {
             x: 150,
             opacity: 0,
             duration: 0.7,
-            ease: "power4",
-            stagger: 0.04
+            ease: 'power4',
+            stagger: 0.04,
         });
-        setAnimation(anim);
+        animationRef.current = anim;
     };
 
-    const playWords = () => {
-        animation?.revert();
-        const anim = gsap.from(splitRef.current.words, {
-            y: -100,
-            opacity: 0,
-            rotation: "random(-80, 80)",
-            duration: 0.7,
-            ease: "back",
-            stagger: 0.15
-        });
-        setAnimation(anim);
+    const setupSplit = ()=>{
+        if(!textRef.current)return;
+        if(splitRef.current)splitRef.current.revert();
+
+        splitRef.current = SplitText.create(textRef.current, {type: 'chars,words,lines'});
     };
 
-    const playLines = () => {
-        animation?.revert();
-        const anim = gsap.from(splitRef.current.lines, {
-            rotationX: -100,
-            transformOrigin: "50% 50% -160px",
-            opacity: 0,
-            duration: 0.8,
-            ease: "power3",
-            stagger: 0.25
-        });
-        setAnimation(anim);
-    };
-
-    useGSAP(() => {
+    useGSAP(()=>{
         document.fonts.ready.then(() => {
-            splitRef.current = SplitText.create(textRef.current, { type: "chars,words,lines" });
+            setupSplit();
+            playChars();
         });
-    }, { scope: containerRef });
+        },{scope: containerRef}
+    );
 
+    useEffect(()=> ()=>{
+        if (animationRef.current) {
+            animationRef.current.kill();
+            animationRef.current = null;
+        }
+        if (splitRef.current) {
+            splitRef.current.revert();
+            splitRef.current = null;
+        }
+    },[]);
 
-
-    return(
+    return (
         <div ref={containerRef} className="p-8">
             <TextDecorationBar color="secondary">
                 <p ref={textRef} className="text-2xl md:text-4xl">React Developer | Adobe Experience Manager (AEM) Content Lead | Frontend Engineer</p>
             </TextDecorationBar>
-            <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem' }}>
-            </div>
         </div>
-    )
+    );
 }
