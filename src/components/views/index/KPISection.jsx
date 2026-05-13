@@ -1,5 +1,5 @@
 const KPIs = [
-	{ value: '6+', title: 'Years of Engineering' },
+	{ value: '4+', title: 'Years of Engineering' },
 	{ value: '15+', title: 'Major AEM Projects' },
 	{ value: '99%', title: 'Code Coverage Rate' },
 	{ value: 'Global', title: 'Content Standards' },
