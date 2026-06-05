@@ -15,7 +15,7 @@ export default function ContactMe() {
 
 		try {
 			const response = await fetch(
-				'https://formsubmit.co/a4615a61aca2ce82fa53a02e302524a6 ',
+				'https://formsubmit.co/a4615a61aca2ce82fa53a02e302524a6',
 				{
 					method: 'POST',
 					body: JSON.stringify(data, null, 2),
