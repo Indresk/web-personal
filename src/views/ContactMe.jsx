@@ -9,20 +9,25 @@ export default function ContactMe() {
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		const data = Object.fromEntries(new FormData(e.currentTarget));
+		const form = e.currentTarget;
+
+		const data = Object.fromEntries(new FormData(form));
 
 		try {
-			const response = await fetch('https://formsubmit.co/gif.poto@gmail.com', {
-				method: 'POST',
-				body: data,
-			});
+			const response = await fetch(
+				'https://formsubmit.co/a4615a61aca2ce82fa53a02e302524a6 ',
+				{
+					method: 'POST',
+					body: JSON.stringify(data, null, 2),
+				},
+			);
 
 			if (response.ok) {
 				setSendState('Thanks! Your message was sent.');
 				setShowMessage(true);
+				form.reset();
 				setTimeout(() => {
 					setShowMessage(false);
-					form.reset();
 				}, 3000);
 			} else {
 				setSendState('Something went wrong. Please try again.');
