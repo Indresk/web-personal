@@ -18,7 +18,9 @@ function App() {
 		<>
 			<div className='min-h-screen grid grid-rows-[auto_1fr_auto]'>
 				<Header />
-				<Router />
+				<main>
+					<Router />
+				</main>
 				<Footer />
 			</div>
 			<Spinner />

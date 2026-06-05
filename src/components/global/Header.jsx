@@ -168,7 +168,9 @@ export default function Header() {
 					))}
 				</nav>
 
-				<Button>Contact Me</Button>
+				<LinkTo to='/contact-me' message='contact me'>
+					<Button fullWidth>Contact Me</Button>
+				</LinkTo>
 			</div>
 
 			{isDropdownOpen && (
@@ -195,7 +197,9 @@ export default function Header() {
 						</ul>
 
 						<div className='px-4 pb-4'>
-							<Button fullWidth>Contact Me</Button>
+							<LinkTo to='/contact-me' message='contact me'>
+								<Button fullWidth>Contact Me</Button>
+							</LinkTo>
 						</div>
 					</nav>
 				</div>
