@@ -14,7 +14,7 @@ export default function Index() {
 				</section>
 				<section className='col-span-12 lg:col-span-5 xl:col-span-4 p-2 z-0'>
 					<div className='grid grid-cols-2 grid-rows-4 gap-2'>
-						<LinkTo to='/experience' className='col-span-2 row-span-2'>
+						<LinkTo to='/projects' className='col-span-2 row-span-2'>
 							<div className=' relative overflow-hidden bg-secondary group'>
 								<img
 									alt=''
