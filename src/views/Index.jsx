@@ -1,3 +1,4 @@
+import { LinkTo } from '../components/navigation/LinkTo';
 import Hero from '../components/views/index/Hero';
 import KPISection from '../components/views/index/KPISection';
 import StackBadge from '../components/views/index/StackBadge';
@@ -13,56 +14,68 @@ export default function Index() {
 				</section>
 				<section className='col-span-12 lg:col-span-5 xl:col-span-4 p-2 z-0'>
 					<div className='grid grid-cols-2 grid-rows-4 gap-2'>
-						<div className='col-span-2 row-span-2 relative overflow-hidden bg-secondary group'>
-							<img
-								alt=''
-								className='w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700'
-								src='https://lh3.googleusercontent.com/aida-public/AB6AXuC6leXfjCaQp0e5AWipXYOIrrylHRs-krWidi5Xhfzl1V3rB_JHS6J30N4LkiaVe6dTtaTA8MqpnkHD7_KWtpWo88cx7h6R79k7ZOy8-0ITvE2zI7XI9scpPRp-uXrif2BOGs71Ii8fRtftkfxCYAT0JCB8X457zq6rG4Y5KnKm0YVQyYBGXbBJbACD3lAFVsKCp683aIHAsiitEEkKWeEvQ4jQkvmVWN2AYEUU-W7WFin_niZDzzxCwbc72RuUR71_RGlspSy0Ilc'
-							/>
-							<div className='absolute inset-0 p-8 flex flex-col justify-end'>
-								<div className='bg-primary text-on-primary-fixed inline-block px-3 py-1 font-headline font-bold text-xs uppercase mb-4 w-fit'>
-									Featured expertise
+						<LinkTo to='/experience' className='col-span-2 row-span-2'>
+							<div className=' relative overflow-hidden bg-secondary group'>
+								<img
+									alt=''
+									className='w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700 aspect-square'
+									src='https://portafolio.daliahbanda.com/internal-projects/ableton-controller-1.png'
+								/>
+								<div className='absolute inset-0 p-8 flex flex-col justify-end'>
+									<div className='bg-primary text-on-primary-fixed inline-block px-3 py-1 font-headline font-bold text-xs uppercase mb-4 w-fit'>
+										Featured expertise
+									</div>
+									<h3 className='text-surface text-white font-headline font-bold text-3xl uppercase '>
+										React Development
+									</h3>
 								</div>
-								<h3 className='text-surface text-white font-headline font-bold text-3xl uppercase '>
-									React Development
-								</h3>
 							</div>
-						</div>
-						<div className='bg-primary col-span-1 row-span-1 bg-primary-container p-6 flex flex-col justify-between'>
-							<span
-								className='material-symbols-outlined text-4xl text-on-primary-container'
-								data-icon='code'
-								data-weight='fill'>
-								code
-							</span>
-							<div className='font-headline font-black text-on-primary-container text-lg leading-tight uppercase'>
-								AEM <br />
-								Authoring
+						</LinkTo>
+						<LinkTo to='/experience' className='col-span-1 row-span-1'>
+							<div className='bg-primary bg-primary-container p-6 flex flex-col justify-between aspect-square'>
+								<span
+									className='material-symbols-outlined text-4xl text-on-primary-container'
+									data-icon='code'
+									data-weight='fill'>
+									code
+								</span>
+								<div className='font-headline font-black text-on-primary-container text-lg leading-tight uppercase'>
+									AEM <br />
+									Authoring
+								</div>
 							</div>
-						</div>
-						<div className='col-span-1 row-span-1 bg-lightergray p-6 flex flex-col justify-between'>
-							<div className='font-headline font-black text-on-surface text-lg leading-tight uppercase'>
-								REST <br />
-								Api
+						</LinkTo>
+						<LinkTo to='/experience' className='col-span-1 row-span-1'>
+							<div className=' bg-lightergray p-6 flex flex-col justify-between aspect-square'>
+								<div className='font-headline font-black text-on-surface text-lg leading-tight uppercase'>
+									REST <br />
+									Api
+								</div>
 							</div>
-						</div>
-						<div className='col-span-1 row-span-1 relative overflow-hidden'>
-							<img
-								alt=''
-								className='w-full h-full object-cover grayscale '
-								data-alt='extreme close up of high definition computer monitor displaying lines of javascript and react code in a dark environment with blue highlights'
-								src='https://lh3.googleusercontent.com/aida-public/AB6AXuCJo0IzF1ITbMuo5goUFRkXSn9WMzOi9f5KKoF1pfJ6c--73BYQX8WptaY0poS8Nrcd1j8BvihJXDlLvuDHiGroKDmeEwwyyWxqWh8lUYQ5pW3nWJCn8dKH2kj54S-ORP6FxS3B0ByNdeNfkdd06ioqWgkvzpBzu2OlJya1sJScCDBGYkkTk3aNzcURFv7_roWdTxkB9HObxly72LELz1FTzYrHiQ__uaooNh8Q2hL2Td16rLxYMkz8dR_oNNvpJpNy9zdTuTncCzY'
-							/>
-							<div className='absolute top-6 left-6 font-headline font-black text-white text-on-surface text-lg leading-tight uppercase'>
-								WordPress <br />
-								Management
+						</LinkTo>
+						<LinkTo
+							to='/experience'
+							className='col-span-1 row-span-1 aspect-square'>
+							<div className=' relative overflow-hidden bg-black'>
+								<img
+									alt=''
+									className='w-full h-full object-cover aspect-square mask-t-from-5'
+									src='https://portafolio.daliahbanda.com/ev-projects/compensar-asphalt/1.jpg'
+								/>
+
+								<div className='absolute top-6 left-6 font-headline font-black text-white text-on-surface text-lg leading-tight uppercase'>
+									WordPress <br />
+									Management
+								</div>
 							</div>
-						</div>
-						<div className='col-span-1 row-span-1 bg-secondary p-6 flex flex-col justify-end items-end'>
-							<div className='font-headline font-black text-white text-on-surface text-lg leading-tight uppercase'>
-								About Me
+						</LinkTo>
+						<LinkTo to='/about' className='col-span-1 row-span-1'>
+							<div className=' bg-secondary p-6 flex flex-col justify-end items-end aspect-square'>
+								<div className='font-headline font-black text-white text-on-surface text-lg leading-tight uppercase'>
+									About Me
+								</div>
 							</div>
-						</div>
+						</LinkTo>
 					</div>
 				</section>
 				<KPISection />
