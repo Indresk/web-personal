@@ -2,7 +2,7 @@ export default function TextDecorationBar({
 	color,
 	position,
 	children,
-	className,
+	className = '',
 }) {
 	let classesBuffer = '';
 
@@ -13,12 +13,21 @@ export default function TextDecorationBar({
 		case 'secondary':
 			classesBuffer += 'border-secondary ';
 			break;
+		case 'gray':
+			classesBuffer += 'border-lightgray ';
+			break;
 		default:
 			classesBuffer += 'border-white ';
 			break;
 	}
 
 	switch (position) {
+		case 'top':
+			classesBuffer += 'border-t-4 ';
+			break;
+		case 'right':
+			classesBuffer += 'border-r-4 ';
+			break;
 		case 'bottom':
 			classesBuffer += 'border-b-4 ';
 			break;

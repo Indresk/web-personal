@@ -97,7 +97,7 @@ export default function Header() {
 		<header
 			className={[
 				isDropdownOpen ? 'fixed' : 'sticky',
-				'top-0 w-full max-w-screen z-50 flex flex-col lg:flex-row justify-between items-center px-6 md:px-10 py-6 bg-whitebg/70 backdrop-blur-md border-b-4 border-primary transition-transform duration-300 ease-in-out',
+				'top-0 w-full max-w-screen z-50 flex flex-col lg:flex-row justify-between items-center px-6 md:px-10 py-6 bg-lightergray/70 backdrop-blur-md border-b-4 border-primary transition-transform duration-300 ease-in-out',
 				isHeaderHidden && !isDropdownOpen
 					? '-translate-y-full'
 					: 'translate-y-0',
@@ -116,30 +116,41 @@ export default function Header() {
 					aria-label={
 						isDropdownOpen ? 'Close navigation menu' : 'Open navigation menu'
 					}
-					className='basis-[10%] flex justify-end lg:hidden cursor-pointer transition duration-300 ease-in-out'>
-					<svg
-						xmlns='http://www.w3.org/2000/svg'
-						className={
-							isDropdownOpen
-								? 'rotate-180 transition-transform duration-300 ease-in-out'
-								: 'transition-transform duration-300 ease-in-out'
-						}
-						width='50'
-						height='50'
-						viewBox='0 0 24 24'
-						fill='none'
-						stroke='currentColor'
-						strokeWidth='2'
-						strokeLinecap='round'
-						strokeLinejoin='round'
-						aria-hidden='true'>
-						<path stroke='none' d='M0 0h24v24H0z' fill='none' />
-						<path d='M4 11l8 3l8 -3' />
-					</svg>
+					className='basis-[10%] flex justify-center lg:hidden cursor-pointer'>
+					{isDropdownOpen ? (
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							width={24}
+							height={24}
+							viewBox='0 0 24 24'
+							fill='none'
+							stroke='currentColor'
+							strokeWidth={2}
+							strokeLinecap='round'
+							strokeLinejoin='round'
+							className=''>
+							<path stroke='none' d='M0 0h24v24H0z' fill='none' />
+							<path d='M18 6l-12 12' />
+							<path d='M6 6l12 12' />
+						</svg>
+					) : (
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							width={24}
+							height={24}
+							viewBox='0 0 24 24'
+							fill='currentColor'
+							className=''>
+							<path stroke='none' d='M0 0h24v24H0z' fill='none' />
+							<path d='M21 6a1 1 0 0 1 -1 1h-16a1 1 0 1 1 0 -2h16a1 1 0 0 1 1 1' />
+							<path d='M21 12a1 1 0 0 1 -1 1h-16a1 1 0 0 1 0 -2h16a1 1 0 0 1 1 1' />
+							<path d='M21 18a1 1 0 0 1 -1 1h-16a1 1 0 0 1 0 -2h16a1 1 0 0 1 1 1' />
+						</svg>
+					)}
 				</button>
 			</div>
 
-			<div className='large-container hidden lg:flex gap-4'>
+			<div className='hidden lg:flex gap-8'>
 				<nav
 					className='flex items-center gap-8'
 					aria-label='Primary navigation'>
@@ -150,14 +161,14 @@ export default function Header() {
 							message={page.displayedName}
 							useActiveState
 							end
-							activeClassName='text-[#6d5e00] border-b-2 border-[#6d5e00]'
-							className='uppercase tracking-tighter text-secondary opacity-70 hover:opacity-100 hover:text-[#6d5e00] transition-all duration-300'>
+							activeClassName='font-bold border-b-2 border-primary'
+							className='uppercase tracking-tighter text-secondary opacity-70 hover:opacity-100 hover:font-bold transition-all duration-300'>
 							{page.displayedName}
 						</LinkTo>
 					))}
 				</nav>
 
-				<Button>Hire Me</Button>
+				<Button>Contact Me</Button>
 			</div>
 
 			{isDropdownOpen && (
@@ -175,8 +186,8 @@ export default function Header() {
 										message={page.displayedName}
 										useActiveState
 										end
-										activeClassName='text-[#6d5e00] border-b-2 border-[#6d5e00]'
-										className='w-full inline-block uppercase tracking-tighter text-secondary opacity-70 hover:opacity-100 hover:text-[#6d5e00] transition-all duration-300'>
+										activeClassName='font-bold border-b-2 border-primary'
+										className='w-full inline-block uppercase tracking-tighter text-secondary opacity-70 hover:opacity-100 hover:font-bold transition-all duration-300'>
 										{page.displayedName}
 									</LinkTo>
 								</li>
@@ -184,7 +195,7 @@ export default function Header() {
 						</ul>
 
 						<div className='px-4 pb-4'>
-							<Button fullWidth>Hire Me</Button>
+							<Button fullWidth>Contact Me</Button>
 						</div>
 					</nav>
 				</div>

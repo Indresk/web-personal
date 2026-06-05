@@ -144,11 +144,7 @@ export default function Hero() {
 	return (
 		<div
 			ref={containerRef}
-			className='px-6 md:px-16 lg:px-24 py-20 lg:py-0 lg:h-screen flex justify-center flex-col relative'>
-			{/* <h2 className='font-headline font-light text-secondary uppercase tracking-[0.2em] text-sm mb-4'>
-				Eyebrow placeholder
-			</h2> */}
-
+			className='px-6 md:px-16 lg:px-24 py-10 lg:h-screen flex justify-center flex-col relative'>
 			<h1 className='font-headline text-5xl md:text-7xl lg:text-8xl text-on-surface leading-[0.9] tracking-tighter mb-8'>
 				RAFAEL
 				<br />

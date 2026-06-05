@@ -1,19 +1,17 @@
-import { Routes, Route } from 'react-router';
+import { Routes, Route, Navigate } from 'react-router';
 
 import Index from './views/Index';
-import Portfolio from './views/Portfolio';
-import ErrorPage from './views/ErrorPage';
 import About from './views/About';
 
 export default function Router() {
 	return (
 		<Routes>
 			<Route path='/' element={<Index />} />
-			<Route path='/projects' element={<Portfolio />} />
-			<Route path='/experience' element={<Portfolio />} />
+			<Route path='/projects' element={<About />} />
+			<Route path='/experience' element={<About />} />
 			<Route path='/about' element={<About />} />
-			<Route path='/portfolio' element={<Portfolio />} />
-			<Route path='/*' element={<ErrorPage />} />
+			<Route path='/contact-me' element={<About />} />
+			<Route path='/*' element={<Navigate to='/' replace />} />
 		</Routes>
 	);
 }
