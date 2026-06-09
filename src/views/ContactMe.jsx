@@ -14,13 +14,10 @@ export default function ContactMe() {
 		const data = Object.fromEntries(new FormData(form));
 
 		try {
-			const response = await fetch(
-				'https://formsubmit.co/a4615a61aca2ce82fa53a02e302524a6',
-				{
-					method: 'POST',
-					body: JSON.stringify(data, null, 2),
-				},
-			);
+			const response = await fetch('https://formsubmit.co/gif.poto@gmail.com', {
+				method: 'POST',
+				body: JSON.stringify(data, null, 2),
+			});
 
 			if (response.ok) {
 				setSendState('Thanks! Your message was sent.');
