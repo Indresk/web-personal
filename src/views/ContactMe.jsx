@@ -22,7 +22,7 @@ export default function ContactMe() {
 			}
 		}
 
-		const response = newFormSend(data);
+		const response = await newFormSend(data);
 
 		if (response.status === 'failed') {
 			setSendState(`Something went wrong. Please try again. ${response.error}`);
