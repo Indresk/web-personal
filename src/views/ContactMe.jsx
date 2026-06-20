@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Button from '../components/visual/buttons/Button';
 import SidesSeparator from '../components/visual/containers/SidesSeparator';
 import TextSymbol from '../components/visual/TextSymbol';
+import { newFormSend } from '../db/firebase';
 
 export default function ContactMe() {
 	const [sendState, setSendState] = useState('');
@@ -13,34 +14,36 @@ export default function ContactMe() {
 
 		const data = Object.fromEntries(new FormData(form));
 
-		try {
-			const response = await fetch('https://formsubmit.co/gif.poto@gmail.com', {
-				method: 'POST',
-				body: JSON.stringify(data, null, 2),
-			});
-
-			if (response.ok) {
-				setSendState('Thanks! Your message was sent.');
-				setShowMessage(true);
-				form.reset();
-				setTimeout(() => {
-					setShowMessage(false);
-				}, 3000);
-			} else {
-				setSendState('Something went wrong. Please try again.');
-				setShowMessage(true);
-				setTimeout(() => {
-					setShowMessage(false);
-				}, 3000);
+		for (const [key, value] of Object.entries(data)) {
+			if (value === undefined || value === '') {
+				setSendState(`Field ${key} is undefined. Please try again.`);
+				infoTextControl();
+				return;
 			}
-		} catch (error) {
-			setSendState('Connection error. Please try again.');
-			setShowMessage(true);
-			setTimeout(() => {
-				setShowMessage(false);
-			}, 3000);
 		}
+
+		const response = newFormSend(data);
+
+		if (response.status === 'failed') {
+			setSendState(`Something went wrong. Please try again. ${response.error}`);
+			infoTextControl();
+			return;
+		}
+
+		setSendState(
+			`Thanks! Your message was sent with the following ID: ${response.id}.`,
+		);
+
+		form.reset();
+		infoTextControl();
 	};
+
+	function infoTextControl() {
+		setShowMessage(true);
+		setTimeout(() => {
+			setShowMessage(false);
+		}, 3000);
+	}
 
 	return (
 		<>
@@ -96,7 +99,7 @@ export default function ContactMe() {
 										id='other'
 										className='align-middle w-full resize-none font-normal text-small placeholder:text-foreground-500 shadow-xs px-3 py-2 bg-white border-2 border-amber-200 p-2 h-[100px] min-h-10 rounded-medium transition-background motion-reduce:transition-none !duration-150 outline-solid outline-transparent !h-auto'
 										rows='5'
-										name='other'
+										name='message'
 										placeholder="I'd love to hear your message..."></textarea>
 								</div>
 							</div>
