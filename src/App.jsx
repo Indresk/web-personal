@@ -10,6 +10,12 @@ function App() {
 	const { starterTransition } = useRouteTransition();
 	useScrollToTop();
 
+	if ('serviceWorker' in navigator) {
+		window.addEventListener('load', () => {
+			navigator.serviceWorker.register('/sw.js');
+		});
+	}
+
 	useEffect(() => {
 		starterTransition();
 	}, []);
